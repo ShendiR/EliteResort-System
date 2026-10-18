@@ -17,9 +17,10 @@ import BookingList from "./pages/Bookings/BookingList";
 import Login from "./pages/Auth/Login";
 import AmenityList from "./pages/Amenities/AmenityList";
 import PaymentList from "./pages/Payments/PaymentList";
-import StaffList from './pages/Staff/StaffList';
-import SpaList from './pages/Spa/SpaList';
-import ActivityList from './pages/Activities/ActivityList';
+import StaffList from "./pages/Staff/StaffList";
+import SpaList from "./pages/Spa/SpaList";
+import ActivityList from "./pages/Activities/ActivityList";
+import EmriPrindPage from "./pages/EmriPrind/EmriPrindPage";
 
 // SIGUROHU QE KETA EMRA PERPUTHEN ME FOLDERS TUAJ ✅
 import EventList from "./pages/Events/EventList";
@@ -51,12 +52,13 @@ function App() {
                   <main className="flex-1 overflow-y-auto p-8">
                     <Routes>
                       <Route path="/" element={<Dashboard />} />
-                      
+                      <Route path="/emri-prind" element={<EmriPrindPage />} />
+
                       {/* --- MANAGEMENT GROUP --- */}
                       <Route path="/bookings" element={<BookingList />} />
                       <Route path="/guests" element={<GuestList />} />
                       <Route path="/payments" element={<PaymentList />} />
-                      
+
                       {/* ROUTE E EVENTEVE ✅ */}
                       <Route path="/events" element={<EventList />} />
 

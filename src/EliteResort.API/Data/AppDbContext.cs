@@ -28,7 +28,8 @@ namespace EliteResort.API.Data
         public DbSet<EquipmentRental> EquipmentRentals { get; set; }
         public DbSet<Staff> Staff { get; set; }
         public DbSet<ServiceBooking> ServiceBookings { get; set; }
-
+        public DbSet<EmriPrind> EmriPrinderit { get; set; }
+        public DbSet<EmriFemije> EmriFemijet { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

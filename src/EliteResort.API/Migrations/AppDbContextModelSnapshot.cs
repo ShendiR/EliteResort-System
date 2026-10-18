@@ -140,6 +140,46 @@ namespace EliteResort.API.Migrations
                     b.ToTable("Discounts");
                 });
 
+            modelBuilder.Entity("EliteResort.API.Models.EmriFemije", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Detaji")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmriPrindId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmriPrindId");
+
+                    b.ToTable("EmriFemijet");
+                });
+
+            modelBuilder.Entity("EliteResort.API.Models.EmriPrind", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Emri")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pershkrimi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmriPrinderit");
+                });
+
             modelBuilder.Entity("EliteResort.API.Models.EquipmentRental", b =>
                 {
                     b.Property<int>("Id")
@@ -616,6 +656,17 @@ namespace EliteResort.API.Migrations
                     b.Navigation("Room");
                 });
 
+            modelBuilder.Entity("EliteResort.API.Models.EmriFemije", b =>
+                {
+                    b.HasOne("EliteResort.API.Models.EmriPrind", "EmriPrind")
+                        .WithMany("EmriFemijet")
+                        .HasForeignKey("EmriPrindId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmriPrind");
+                });
+
             modelBuilder.Entity("EliteResort.API.Models.Room", b =>
                 {
                     b.HasOne("EliteResort.API.Models.RoomType", "RoomType")
@@ -641,6 +692,11 @@ namespace EliteResort.API.Migrations
             modelBuilder.Entity("EliteResort.API.Models.Activity", b =>
                 {
                     b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("EliteResort.API.Models.EmriPrind", b =>
+                {
+                    b.Navigation("EmriFemijet");
                 });
 
             modelBuilder.Entity("EliteResort.API.Models.EquipmentRental", b =>
